@@ -141,4 +141,6 @@ RUN \
     cp /pygeoapi/pygeoapi-config.yml /pygeoapi/local.config.yml \
     && cp /pygeoapi/docker/entrypoint.sh /entrypoint.sh
 
+ENV CONTAINER_PORT=${PORT}
+
 ENTRYPOINT ["/entrypoint.sh"]
