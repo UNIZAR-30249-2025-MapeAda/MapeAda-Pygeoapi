@@ -30,8 +30,8 @@
 server:
     bind:
         host: 0.0.0.0
-        port: 5000
-    url: http://localhost:5000
+        port: 80
+    url: ${PYGEOAPI_SERVER_URL:-http://localhost:5000}
     mimetype: application/json; charset=UTF-8
     encoding: utf-8
     gzip: false
@@ -46,7 +46,7 @@ server:
     map:
         url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    admin: false
+    admin: ${PYGEOAPI_SERVER_ADMIN:-false}
 
 logging:
     level: ERROR
@@ -110,11 +110,11 @@ resources:
             - type: feature
               name: PostgreSQL
               data:
-                host: 127.0.0.1
-                port: 5432
-                dbname: mapeada
-                user: postgres
-                password: postgres
+                host: ${DB_HOST}
+                port: ${DB_PORT}
+                dbname: ${DB_NAME}
+                user: ${DB_USER}
+                password: ${DB_PASS}
                 search_path: [public]
               id_field: id
               table: espacios
